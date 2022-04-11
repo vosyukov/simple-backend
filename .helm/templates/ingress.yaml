@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mp-bot-ingress
+spec:
+  tls:
+    - hosts:
+        - pay.wb-bot.fun
+      secretName: mp-bot-tls-secret
+  rules:
+    - host: "pay.wb-bot.fun"
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/callback"
+            backend:
+              service:
+                name: mp-bot-api-service
+                port:
+                  number: 4200
+
+  ingressClassName: nginx
+
+---
+
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mp-bot-le-crt
+spec:
+  secretName: mp-bot-tls-secret
+  issuerRef:
+    kind: Issuer
+    name: mp-bot-letsencrypt
+  commonName: pay.wb-bot.fun
+  dnsNames:
+    - pay.wb-bot.fun
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: mp-bot-letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: mp-bot-letsencrypt
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+
+---

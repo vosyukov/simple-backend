@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mp-bot-telegram-io
+  labels:
+    app: mp-bot-telegram-io
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mp-bot-telegram-io
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mp-bot-telegram-io
+    spec:
+      containers:
+        - name: mp-bot-telegram-io
+          image: vosyukov/mp_bot-telegram-io:{{ .Values.version }}
+          command: ["npm", "run", "start:prod"]
+          ports:
+            - containerPort: 4200
+          env:
+            - name: TG_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: tg-secret
+            - name: REDIS_HOST
+              value: 'master.89b65e91-5dd2-4c62-8007-30023b86d103.c.dbaas.selcloud.ru'
+            - name: REDIS_PORT
+              value: '6379'
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: redis-secret
+      imagePullSecrets:
+        - name: regcred
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mp-bot-api
+  labels:
+    app: mp-bot-api
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: mp-bot-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mp-bot-api
+    spec:
+      containers:
+        - name: mp-bot-api
+          image: vosyukov/mp_bot-api:{{ .Values.version }}
+          command: ["npm", "run", "start:prod"]
+          ports:
+            - containerPort: 4200
+          env:
+            - name: MYSQL_HOST
+              value: 'master.d0d4edbe-fb31-4f3b-93da-234a55b85e07.c.dbaas.selcloud.ru'
+            - name: MYSQL_PORT
+              value: '6033'
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  key: mysql-user
+                  name: db-secret
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mysql-password
+                  name: db-secret
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: mysql-database
+                  name: db-secret
+            - name: YOOKASSA_ID
+              valueFrom:
+                secretKeyRef:
+                  key: id
+                  name: yookassa-secret
+            - name: YOOKASSA_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: yookassa-secret
+            - name: TRIAL_PERIOD_DAYS
+              value: '30'
+            - name: REDIS_HOST
+              value: 'master.89b65e91-5dd2-4c62-8007-30023b86d103.c.dbaas.selcloud.ru'
+            - name: REDIS_PORT
+              value: '6379'
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: redis-secret
+      imagePullSecrets:
+        - name: regcred
