@@ -35,7 +35,7 @@ jobs:
         with:
           context: ./
           push: true
-          tags: simple/backend:${{ env.RELEASE_VERSION }}
+          tags: backend:${{ env.RELEASE_VERSION }}
 
   deployment:
     needs: [build-backend]
