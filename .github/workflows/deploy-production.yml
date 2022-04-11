@@ -25,7 +25,7 @@ jobs:
       - name: Login to docker hub
         uses: docker/login-action@v1
         with:
-          registry: cr.selcloud.ru
+          registry: ${{secrets.HUB_REGISTRY_URL}}
           username: ${{secrets.HUB_REGISTRY_USER}}
           password: ${{secrets.HUB_REGISTRY_TOKEN}}
       - name: set env
@@ -37,7 +37,7 @@ jobs:
         with:
           context: ./
           push: true
-          tags: cr.selcloud.ru/dockerhub/wfe:${{ env.RELEASE_VERSION }}
+          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend:${{ env.RELEASE_VERSION }}
 
   deployment:
     needs: [build-backend]
