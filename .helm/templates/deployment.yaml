@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: mp-bot-api
-          image: dockerhub/simple-backend:{{ .Values.version }}
+          image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
           command: ["npm", "run", "start:prod"]
           ports:
             - containerPort: 4200
