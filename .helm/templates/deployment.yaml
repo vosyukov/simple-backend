@@ -52,7 +52,7 @@ metadata:
   labels:
     app: mp-bot-api
 spec:
-  replicas: 10
+  replicas: 2
   selector:
     matchLabels:
       app: mp-bot-api
@@ -68,7 +68,7 @@ spec:
     spec:
       containers:
         - name: mp-bot-api
-          image: vosyukov/mp_bot-api:{{ .Values.version }}
+          image: simple-backend:{{ .Values.version }}
           command: ["npm", "run", "start:prod"]
           ports:
             - containerPort: 4200
