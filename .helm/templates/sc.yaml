@@ -1,9 +1,0 @@
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: mp-bot-sc-mysql
-provisioner: cinder.csi.openstack.org
-parameters:
-  type: basic.ru-9a
-  availability: ru-9a
-allowVolumeExpansion: true
