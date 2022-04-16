@@ -28,16 +28,12 @@ jobs:
           registry: ${{secrets.HUB_REGISTRY_URL}}
           username: ${{secrets.HUB_REGISTRY_USER}}
           password: ${{secrets.HUB_REGISTRY_TOKEN}}
-      - name: set env
-        run: echo "latest" >> $GITHUB_ENV
-      - name: set env
-        run: echo ${{secrets.HUB_REGISTRY_URL}}
       - name: Build and push backend image
         uses: docker/build-push-action@v2.4.0
         with:
           context: ./
           push: true
-          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend:${{ env.RELEASE_VERSION }}
+          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend:latest
 
   deployment:
     needs: [build-backend]
@@ -47,5 +43,5 @@ jobs:
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade mp-bot .helm/ --install --create-namespace --atomic --version ${GITHUB_REF##*/} --namespace=mp-bot --set version=${GITHUB_REF##*/}
+          exec: helm upgrade mp-bot .helm/ --install --create-namespace --atomic --version ${GITHUB_REF##*/} --namespace=mp-bot --set version=latest
           kubeconfig: ${{ secrets.KUBECONFIG }}
