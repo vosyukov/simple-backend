@@ -5,14 +5,14 @@ metadata:
 spec:
   tls:
     - hosts:
-        - pay.wb-bot.fun
+        - api.wb-bot.fun
       secretName: mp-bot-tls-secret
   rules:
-    - host: "pay.wb-bot.fun"
+    - host: "api.wb-bot.fun"
       http:
         paths:
           - pathType: Prefix
-            path: "/callback"
+            path: "/api"
             backend:
               service:
                 name: mp-bot-api-service
@@ -33,9 +33,9 @@ spec:
   issuerRef:
     kind: Issuer
     name: mp-bot-letsencrypt
-  commonName: pay.wb-bot.fun
+  commonName: api.wb-bot.fun
   dnsNames:
-    - pay.wb-bot.fun
+    - api.wb-bot.fun
 
 ---
 
