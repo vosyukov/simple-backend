@@ -12,12 +12,12 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/api"
+            path: "/"
             backend:
               service:
                 name: simple-backend-service
                 port:
-                  number: 4200
+                  number: 80
 
   ingressClassName: nginx
 
