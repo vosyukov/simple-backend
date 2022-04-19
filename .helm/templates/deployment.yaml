@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mp-bot-api
+  name: simple-backend-pod
   labels:
     app: mp-bot-api
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: mp-bot-api
@@ -18,12 +18,11 @@ spec:
     metadata:
       labels:
         app: mp-bot-api
-    spec:
-      containers:
-        - name: mp-bot-api
-          image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
-          command: ["npm", "run", "start:prod"]
-          ports:
-            - containerPort: 3000
-      imagePullSecrets:
-        - name: regcred
+  containers:
+    - name: simple-backend
+      image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
+      command: ["npm", "run", "start:prod"]
+      ports:
+        - containerPort: 3000
+  imagePullSecrets:
+    - name: regcred
