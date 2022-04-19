@@ -2,13 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simple-backend-pod
-  labels:
-    app: mp-bot-api
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: mp-bot-api
+      app: simple-backend-pod-label
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -17,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        app: mp-bot-api
+        app: simple-backend-pod-label
     spec:
       containers:
         - name: simple-backend
@@ -25,5 +23,11 @@ spec:
           command: ["npm", "run", "start:prod"]
           ports:
             - containerPort: 3000
+          resources:
+            cpu: 50m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
       imagePullSecrets:
         - name: regcred
