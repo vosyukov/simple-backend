@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        app: simple-backend-pod-label
+        app: simple-backend-deployment-label
     spec:
       containers:
         - name: simple-backend
