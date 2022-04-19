@@ -8,7 +8,7 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: simple-backend-pod-label
+      app: simple-backend-deployment-label
   strategy:
     rollingUpdate:
       maxSurge: 1
