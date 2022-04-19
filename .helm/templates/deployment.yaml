@@ -24,6 +24,6 @@ spec:
           image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
           command: ["npm", "run", "start:prod"]
           ports:
-            - containerPort: 4200
+            - containerPort: 3000
       imagePullSecrets:
         - name: regcred
