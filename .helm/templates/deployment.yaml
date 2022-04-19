@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-backend-deployment-label
+  name: simple-backend-deployment
   labels:
     app: simple-backend-pod-label
 spec:
