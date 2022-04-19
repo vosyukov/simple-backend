@@ -33,9 +33,9 @@ spec:
   issuerRef:
     kind: Issuer
     name: mp-bot-letsencrypt
-  commonName: api.wb-bot.fun
+  commonName: api2.wb-bot.fun
   dnsNames:
-    - api.wb-bot.fun
+    - api2.wb-bot.fun
 
 ---
 
