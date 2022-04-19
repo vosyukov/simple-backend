@@ -18,12 +18,12 @@ spec:
     metadata:
       labels:
         app: mp-bot-api
-  spec:
-    containers:
-      - name: simple-backend
-        image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
-        command: ["npm", "run", "start:prod"]
-        ports:
-          - containerPort: 3000
-    imagePullSecrets:
-      - name: regcred
+    spec:
+      containers:
+        - name: simple-backend
+          image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
+          command: ["npm", "run", "start:prod"]
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: regcred
