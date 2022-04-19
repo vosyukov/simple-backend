@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: simple-backend-deployment
   labels:
-    app: simple-backend-pod-label
+    app: simple-backend-deployment-label
 spec:
   replicas: 2
   selector:
