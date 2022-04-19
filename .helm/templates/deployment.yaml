@@ -1,10 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-backend-pod
-  metadata:
-    labels:
-      app: simple-backend-pod-label
+  name: simple-backend-deployment-label
+  labels:
+    app: simple-backend-pod-label
 spec:
   replicas: 2
   selector:
