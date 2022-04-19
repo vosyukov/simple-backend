@@ -8,7 +8,7 @@ spec:
         - api.wb-bot.fun
       secretName: mp-bot-tls-secret
   rules:
-    - host: "api.wb-bot.fun"
+    - host: "api2.wb-bot.fun"
       http:
         paths:
           - pathType: Prefix
