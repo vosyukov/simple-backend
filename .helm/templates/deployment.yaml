@@ -23,6 +23,7 @@ spec:
         - name: simple-backend
           image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
           command: ["npm", "run", "start:prod"]
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
 #          resources:
