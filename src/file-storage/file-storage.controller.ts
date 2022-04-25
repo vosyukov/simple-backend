@@ -11,6 +11,7 @@ export class FileStorageController {
     @Post('uploadFile')
     public async uploadFile(@Body() dto: UploadFileRequestDto): Promise<UploadFileResponseDto>{
         const  {name, data} = dto
+        console.log(data)
         const file = await this.fileStorageService.uploadFile(name, data)
         return {id: file.id}
     }
