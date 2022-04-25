@@ -25,13 +25,13 @@ spec:
           command: ["npm", "run", "start:prod"]
           ports:
             - containerPort: 3000
-          resources:
-            requests:
-              cpu: 150m
-              memory: 50Mi
-            limits:
-              cpu: 200m
-              memory: 100Mi
+#          resources:
+#            requests:
+#              cpu: 150m
+#              memory: 50Mi
+#            limits:
+#              cpu: 200m
+#              memory: 100Mi
           env:
             - name: DB_HOST
               valueFrom:
