@@ -32,5 +32,36 @@ spec:
             limits:
               cpu: 100m
               memory: 100Mi
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: db-host
+                  name: db-secret
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: db-port
+                  name: db-secret
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: db-user
+                  name: db-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: db-password
+                  name: db-secret
+            - name: FS_LOGIN
+              valueFrom:
+                secretKeyRef:
+                  key: fs-login
+                  name: fs-password
+            - name: FS_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    key: fs-password
+                    name: fs-secret
       imagePullSecrets:
         - name: regcred
