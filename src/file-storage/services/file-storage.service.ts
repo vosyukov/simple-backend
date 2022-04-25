@@ -3,7 +3,7 @@ import {FileEntity} from "../entities/file.entity";
 import {FileRepository} from "../repositories/file.repository";
 import {createHash} from "crypto";
 const { env } = process;
-console.log(env)
+
 const manager = require('node-selectel-manager')({
     login: env.FS_LOGIN,
     password: env.FS_PASSWORD,
