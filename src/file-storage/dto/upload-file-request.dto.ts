@@ -7,7 +7,6 @@ export class UploadFileRequestDto {
     name: string;
 
     @IsDefined()
-    @Type(() => String)
     @Transform(({value}) => Buffer.from(value, 'base64'))
     data: Buffer
 }
