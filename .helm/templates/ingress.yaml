@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: simple-backend-ingress
   annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "5m"
+    nginx.ingress.kubernetes.io/proxy-body-size: "5M"
+    nginx.ingress.kubernetes.io/client-body-buffer-size: "5M"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
 spec:
