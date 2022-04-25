@@ -43,5 +43,5 @@ jobs:
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade mp-bot .helm/ --install --timeout 120s --create-namespace --atomic --version $GITHUB_SHA --namespace=mp-bot --set version=$GITHUB_SHA
+          exec: helm upgrade mp-bot .helm/ --install --timeout 120s --create-namespace --atomic --version $GITHUB_SHA --namespace=mp-bot --set version=latest
           kubeconfig: ${{ secrets.KUBECONFIG }}
