@@ -8,6 +8,6 @@ export class UploadFileRequestDto {
 
     @IsDefined()
     @Type(() => String)
-    @Transform(({value}) => Buffer.from(value))
+    @Transform(({value}) => Buffer.from(value, 'base64'))
     data: Buffer
 }
