@@ -1,5 +1,5 @@
 import {IsDefined, IsString} from "class-validator";
-import {Transform} from "class-transformer";
+import {Transform, Type} from "class-transformer";
 
 export class UploadFileRequestDto {
     @IsDefined()
@@ -7,5 +7,7 @@ export class UploadFileRequestDto {
     name: string;
 
     @IsDefined()
-    data: Uint8Array
+    @Type(() => String)
+    @Transform(({value}) => Buffer.from(value))
+    data: Buffer
 }
