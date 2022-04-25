@@ -4,6 +4,7 @@ metadata:
   name: simple-backend-ingress
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/client_max_body_size: "50m"
 #    nginx.ingress.kubernetes.io/client-body-buffer-size: 10M
 spec:
   tls:
