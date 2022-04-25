@@ -57,11 +57,11 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: fs-login
-                  name: fs-password
+                  name: fs-secret
             - name: FS_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    key: fs-password
-                    name: fs-secret
+              valueFrom:
+                secretKeyRef:
+                  key: fs-password
+                  name: fs-secret
       imagePullSecrets:
         - name: regcred
