@@ -1,5 +1,5 @@
-import {IsDefined, IsString} from "class-validator";
-import {Transform} from "class-transformer";
+import {IsBase64, IsDefined, IsString} from "class-validator";
+
 
 export class UploadFileRequestDto {
     @IsDefined()
@@ -7,6 +7,6 @@ export class UploadFileRequestDto {
     name: string;
 
     @IsDefined()
-    @Transform(({value}) => Buffer.from(value, 'base64'))
-    data: Buffer
+    @IsBase64()
+    data: string
 }
