@@ -39,17 +39,17 @@ spec:
               scheme: HTTP
               path: /health
               port: 3000
-            timeoutSeconds: 10
-            initialDelaySeconds: 100
-            periodSeconds: 15
+            timeoutSeconds: 5
+            initialDelaySeconds: 60
+            periodSeconds: 10
           livenessProbe:
             httpGet:
               scheme: HTTP
               path: /health
               port: 3000
-            timeoutSeconds: 10
-            initialDelaySeconds: 200
-            periodSeconds: 15
+            timeoutSeconds: 5
+            initialDelaySeconds: 100
+            periodSeconds: 10
           env:
             - name: DB_HOST
               valueFrom:
