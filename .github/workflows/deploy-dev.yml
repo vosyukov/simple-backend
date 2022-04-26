@@ -35,7 +35,7 @@ jobs:
         with:
           context: ./
           push: true
-          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend::${{ $GITHUB_RUN_ID }}
+          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend:${{ $GITHUB_RUN_ID }}
 
   deployment:
     needs: [build-backend]
