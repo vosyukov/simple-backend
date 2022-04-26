@@ -1,7 +1,9 @@
 import {Body, Controller, Post} from "@nestjs/common";
 import {AddHallDto} from "./dto/add-hall.dto";
 import {HallService} from "./services/hall.service";
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags('hall')
 @Controller('hall')
 export class HallController {
     constructor(private readonly hallService: HallService) {

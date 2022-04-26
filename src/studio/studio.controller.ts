@@ -1,7 +1,9 @@
 import {Body, Controller, Post} from "@nestjs/common";
 import {StudioService} from "./services/studio.service";
 import {AddStudioDto} from "./dto/add-studio.dto";
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags('studio')
 @Controller('studio')
 export class StudioController {
     constructor(private readonly studioService:StudioService) {}

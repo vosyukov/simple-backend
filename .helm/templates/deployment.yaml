@@ -34,6 +34,13 @@ spec:
             limits:
               cpu: 150m
               memory: 100Mi
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /check
+              port: 30000
+            initialDelaySeconds: 10
+            periodSeconds: 5
           env:
             - name: DB_HOST
               valueFrom:
