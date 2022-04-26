@@ -28,12 +28,14 @@ jobs:
           registry: ${{secrets.HUB_REGISTRY_URL}}
           username: ${{secrets.HUB_REGISTRY_USER}}
           password: ${{secrets.HUB_REGISTRY_TOKEN}}
+      - name: set env
+        run: echo "RELEASE_VERSION=${$GITHUB_RUN_ID}" >> $GITHUB_ENV
       - name: Build and push backend image
         uses: docker/build-push-action@v2.4.0
         with:
           context: ./
           push: true
-          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend:$GITHUB_RUN_ID
+          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend::${{ env.RELEASE_VERSION }}
 
   deployment:
     needs: [build-backend]
