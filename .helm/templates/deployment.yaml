@@ -5,7 +5,7 @@ metadata:
   labels:
     app: simple-backend-deployment-label
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: simple-backend-pod-label
@@ -25,15 +25,14 @@ spec:
         - name: simple-backend
           image: cr.selcloud.ru/dockerhub/simple-backend:{{ .Values.version }}
           command: ["npm", "run", "start:prod"]
-          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources:
             requests:
-              cpu: 150m
+              cpu: 100m
               memory: 50Mi
             limits:
-              cpu: 200m
+              cpu: 150m
               memory: 100Mi
           env:
             - name: DB_HOST
