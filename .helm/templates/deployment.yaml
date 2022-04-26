@@ -1,9 +1,5 @@
 apiVersion: apps/v1
 kind: Deployment
-template:
-  metadata:
-    annotations:
-      rollme: {{ randAlphaNum 5 | quote }}
 metadata:
   name: simple-backend-deployment
   labels:
@@ -20,6 +16,8 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        rollme: { { randAlphaNum 5 | quote } }
       labels:
         app: simple-backend-pod-label
     spec:
