@@ -37,8 +37,8 @@ spec:
           readinessProbe:
             httpGet:
               scheme: HTTP
-              path: /check
-              port: 30000
+              path: /health
+              port: 80
             initialDelaySeconds: 10
             periodSeconds: 5
           env:
