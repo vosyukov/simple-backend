@@ -1,7 +1,8 @@
 
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 
 import {FileEntity} from "../../file-storage/entities/file.entity";
+import {StudioEntity} from "../../studio/entities/studio.entity";
 
 
 const TABLE_NAME ='halls'
@@ -9,6 +10,9 @@ const TABLE_NAME ='halls'
 export class HallEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
+
+    @ManyToOne(() => StudioEntity)
+    studio: StudioEntity
 
     @Column()
     name: string;

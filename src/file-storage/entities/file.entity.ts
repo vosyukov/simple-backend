@@ -1,7 +1,7 @@
 import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {HallEntity} from "../../hall/entities/hall.entity";
-
-@Entity()
+const TABLE_NAME = 'files'
+@Entity(TABLE_NAME)
 export class FileEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;

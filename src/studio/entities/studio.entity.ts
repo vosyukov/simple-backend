@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {HallEntity} from "../../hall/entities/hall.entity";
 
 const TABLE_NAME = 'studios'
 
@@ -9,4 +10,7 @@ export class StudioEntity {
 
     @Column()
     name: string;
+
+    @OneToMany(() =>  HallEntity, v => v.studio, {nullable: true})
+    halls?: HallEntity[]
 }
