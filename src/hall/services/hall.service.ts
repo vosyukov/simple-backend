@@ -22,6 +22,6 @@ export class HallService {
             return p
         })
 
-        return await this.hallRepository.save({name, photos })
+        return await this.hallRepository.save({name, photos, description })
     }
 }

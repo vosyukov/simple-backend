@@ -1,5 +1,5 @@
 
-import {Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 
 import {FileEntity} from "../../file-storage/entities/file.entity";
 
@@ -16,7 +16,7 @@ export class HallEntity {
     @Column({nullable: true})
     description: string;
 
-    @OneToMany(() =>  FileEntity, v => v.id, {nullable: true})
+    @OneToMany(() =>  FileEntity, v => v.hall, {nullable: true})
     photos: FileEntity[]
 
 
