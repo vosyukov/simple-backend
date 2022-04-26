@@ -1,8 +1,15 @@
 import {Controller, Post} from "@nestjs/common";
 import {AddHallDto} from "./dto/add-hall.dto";
+import {HallService} from "./services/hall.service";
 
 @Controller('hall')
 export class HallController {
-    @Post()
-    public addHall(dto: AddHallDto){}
+    constructor(private readonly hallService: HallService) {
+    }
+    @Post('addHall')
+    public async addHall(dto: AddHallDto): Promise<string>{
+        const {name, photoIds, description} = dto
+        const hall = await this.hallService.addHall({name, photoIds, description})
+        return hall.id
+    }
 }

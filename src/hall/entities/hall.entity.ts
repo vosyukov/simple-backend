@@ -1,7 +1,8 @@
-// import {Entity, PrimaryGeneratedColumn} from "typeorm";
 
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {PhotoHallEntity} from "./photo-hall.entity";
+import {Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+
+import {FileEntity} from "../../file-storage/entities/file.entity";
+
 
 const TABLE_NAME ='halls'
 @Entity(TABLE_NAME)
@@ -15,8 +16,8 @@ export class HallEntity {
     @Column()
     description: string;
 
-    @OneToMany(() =>  PhotoHallEntity, (ph => ph.hall))
-    photos: PhotoHallEntity[]
+    @OneToMany(() =>  FileEntity, v => v.id, {nullable: true})
+    photos: FileEntity[]
 
 
 }

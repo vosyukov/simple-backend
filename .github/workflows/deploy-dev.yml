@@ -33,7 +33,7 @@ jobs:
         with:
           context: ./
           push: true
-          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend:latest
+          tags: ${{secrets.HUB_REGISTRY_URL}}/dockerhub/simple-backend:$GITHUB_RUN_ID
 
   deployment:
     needs: [build-backend]
@@ -43,5 +43,5 @@ jobs:
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade mp-bot .helm/ --install --timeout 120s --create-namespace --atomic --version $GITHUB_SHA --namespace=mp-bot --set version=latest
+          exec: helm upgrade mp-bot .helm/ --install --timeout 120s --create-namespace --atomic --version $GITHUB_RUN_ID --namespace=mp-bot --set version=$GITHUB_RUN_ID
           kubeconfig: ${{ secrets.KUBECONFIG }}

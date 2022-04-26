@@ -1,4 +1,5 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {HallEntity} from "../../hall/entities/hall.entity";
 
 @Entity()
 export class FileEntity {
@@ -10,4 +11,7 @@ export class FileEntity {
 
     @CreateDateColumn()
     createdAt: Date
+
+    @ManyToOne(()=>HallEntity, {nullable: true})
+    hall: HallEntity
 }
