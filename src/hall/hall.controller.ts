@@ -8,8 +8,8 @@ export class HallController {
     }
     @Post('addHall')
     public async addHall(@Body() dto: AddHallDto): Promise<string>{
-        const {name, photoIds, description} = dto
-        const hall = await this.hallService.addHall({name, photoIds, description})
+        const {name, photoIds, description, studioId} = dto
+        const hall = await this.hallService.addHall({name, photoIds, description, studioId})
         return hall.id
     }
 }
