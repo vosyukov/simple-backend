@@ -14,4 +14,9 @@ export class StudioService {
         const {name} = options
         return this.studioRepository.save({name})
     }
+
+    public async getStudiosPaginated(offset: number, limit: number): Promise<{items: StudioEntity[], total: number}> {
+        const [items, total ]= await this.studioRepository.findAndCount({skip: offset, take: limit})
+        return {items, total}
+    }
 }
