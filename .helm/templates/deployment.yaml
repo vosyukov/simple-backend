@@ -1,5 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
+template:
+  metadata:
+    annotations:
+      rollme: {{ randAlphaNum 5 | quote }}
 metadata:
   name: simple-backend-deployment
   labels:
