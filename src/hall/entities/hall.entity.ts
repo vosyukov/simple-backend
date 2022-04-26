@@ -13,7 +13,7 @@ export class HallEntity {
     @Column()
     name: string;
 
-    @Column()
+    @Column({nullable: true})
     description: string;
 
     @OneToMany(() =>  FileEntity, v => v.id, {nullable: true})
