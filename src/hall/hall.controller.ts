@@ -12,13 +12,13 @@ export class HallController {
     constructor(private readonly hallService: HallService) {}
     @Post('addHall')
     public async addHall(@Body() dto: AddHallRequestDto): Promise<AddStudioResponseDto>{
-        const {name, photoIds, description, studioId, sourceLink, area, ceilingHeight, price} = dto
-        const {id} = await this.hallService.addHall({name, photoIds, description, studioId, sourceLink, area, ceilingHeight, price})
+        const {name, photoIds, description, studioId, sourceLink, area, ceilingHeight, price, featureIds} = dto
+        const {id} = await this.hallService.addHall({name, photoIds, description, studioId, sourceLink, area, ceilingHeight, price, featureIds})
         return {id}
     }
 
-    @Post('getStudiosPaginated')
-    public async getallsPaginated(@Body() dto: GetHallsPaginatedRequestDto): Promise<GetHallsPaginatedResponseDto>{
+    @Post('getHallPaginated')
+    public async getHallPaginated(@Body() dto: GetHallsPaginatedRequestDto): Promise<GetHallsPaginatedResponseDto>{
         return this.hallService.getHallsPaginated(dto.offset, dto.limit)
     }
 }

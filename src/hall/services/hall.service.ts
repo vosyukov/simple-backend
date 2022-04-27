@@ -3,6 +3,7 @@ import {HallEntity} from "../entities/hall.entity";
 import {HallRepository} from "../repositories/hall.repository";
 import {FileEntity} from "../../file-storage/entities/file.entity";
 import {StudioEntity} from "../../studio/entities/studio.entity";
+import {FeatureEntity} from "../../feature/entities/feature.entity";
 
 export interface AddHallOptions {
     name: string;
@@ -12,7 +13,8 @@ export interface AddHallOptions {
     ceilingHeight?: number
     price?: number
     studioId: string
-    photoIds: string[]
+    photoIds?: string[]
+    featureIds?: string[]
 }
 
 @Injectable()
@@ -21,7 +23,7 @@ export class HallService {
     }
 
     public async addHall(options: AddHallOptions):Promise<HallEntity> {
-        const {name, photoIds, description, studioId, sourceLink, area, ceilingHeight, price} = options
+        const {name, photoIds, description, studioId, sourceLink, area, ceilingHeight, price, featureIds} = options
         const photos = photoIds.map(i => {
             const p = new FileEntity()
             p.id = i
@@ -31,11 +33,17 @@ export class HallService {
         const studio = new StudioEntity()
         studio.id = studioId
 
-        return await this.hallRepository.save({name, photos, description, studio, sourceLink, area, ceilingHeight, price})
+        const features = featureIds.map(i => {
+            const p = new FeatureEntity()
+            p.id = i
+            return p
+        })
+
+        return await this.hallRepository.save({name, photos, description, studio, sourceLink, area, ceilingHeight, price, features})
     }
 
     public async getHallsPaginated(offset: number, limit: number): Promise<{items: HallEntity[], total: number}> {
-        const [items, total ]= await this.hallRepository.findAndCount({skip: offset, take: limit, relations: ['photos']})
+        const [items, total ]= await this.hallRepository.findAndCount({skip: offset, take: limit, relations: ['photos', 'features']})
         return {items, total}
     }
 }

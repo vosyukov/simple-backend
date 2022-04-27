@@ -30,7 +30,11 @@ export class AddHallRequestDto {
     @IsNumber()
     price?: number
 
-    @IsDefined()
+    @IsOptional()
     @IsUUID('4', {each: true})
-    photoIds: string[]
+    featureIds?: string[]
+
+    @IsOptional()
+    @IsUUID('4', {each: true})
+    photoIds?: string[]
 }

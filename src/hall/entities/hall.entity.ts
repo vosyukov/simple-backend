@@ -1,8 +1,9 @@
 
-import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 
 import {FileEntity} from "../../file-storage/entities/file.entity";
 import {StudioEntity} from "../../studio/entities/studio.entity";
+import {FeatureEntity} from "../../feature/entities/feature.entity";
 
 
 const TABLE_NAME ='halls'
@@ -32,8 +33,12 @@ export class HallEntity {
     @Column({nullable: true})
     price?: number
 
+    @ManyToMany(() => FeatureEntity, {nullable: true})
+    @JoinTable()
+    features?: FeatureEntity[]
+
     @OneToMany(() =>  FileEntity, v => v.hall, {nullable: true})
-    photos: FileEntity[]
+    photos?: FileEntity[]
 
 
 }
