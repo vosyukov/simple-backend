@@ -23,6 +23,9 @@ export class HallEntity {
     @Column({nullable: true})
     sourceLink?: string
 
+    @Column({nullable: true})
+    area?: number
+
     @OneToMany(() =>  FileEntity, v => v.hall, {nullable: true})
     photos: FileEntity[]
 

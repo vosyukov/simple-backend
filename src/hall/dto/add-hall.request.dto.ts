@@ -1,4 +1,4 @@
-import {IsDefined, IsOptional, IsString, IsUUID} from "class-validator";
+import {IsDefined, IsNumber, IsOptional, IsString, IsUUID} from "class-validator";
 
 export class AddHallRequestDto {
     @IsDefined()
@@ -17,6 +17,10 @@ export class AddHallRequestDto {
     @IsOptional()
     @IsString()
     sourceLink?: string
+
+    @IsOptional()
+    @IsNumber()
+    area?: number
 
     @IsDefined()
     @IsUUID('4', {each: true})

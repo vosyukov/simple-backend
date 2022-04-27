@@ -11,8 +11,8 @@ export class HallController {
     }
     @Post('addHall')
     public async addHall(@Body() dto: AddHallRequestDto): Promise<AddStudioResponseDto>{
-        const {name, photoIds, description, studioId, sourceLink} = dto
-        const {id} = await this.hallService.addHall({name, photoIds, description, studioId, sourceLink})
+        const {name, photoIds, description, studioId, sourceLink, area} = dto
+        const {id} = await this.hallService.addHall({name, photoIds, description, studioId, sourceLink, area})
         return {id}
     }
 }
