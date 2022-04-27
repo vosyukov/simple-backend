@@ -43,7 +43,7 @@ export class HallService {
     }
 
     public async getHallsPaginated(offset: number, limit: number): Promise<{items: HallEntity[], total: number}> {
-        const [items, total ]= await this.hallRepository.findAndCount({skip: offset, take: limit, relations: ['photos', 'features']})
+        const [items, total ]= await this.hallRepository.findAndCount({skip: offset, take: limit, relations: ['studio','photos', 'features']})
         return {items, total}
     }
 }

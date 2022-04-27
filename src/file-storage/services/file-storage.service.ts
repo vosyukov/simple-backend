@@ -9,8 +9,8 @@ const manager = require('node-selectel-manager')({
     password: env.FS_PASSWORD,
 });
 
-const BUCKET_NAME = 'simple'
-const DIR = 'hall-photos'
+export const BUCKET_NAME = 'simple'
+export const DIR = 'hall-photos'
 
 @Injectable()
 export class FileStorageService {

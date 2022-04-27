@@ -1,5 +1,18 @@
 
+class HallResponse {
+    id: string
+    studioId: string
+    description: string
+    name: string
+    features: string[]
+    area: number
+    ceilingHeight: number
+    price: number
+    photos: string[]
+
+}
+
 export class GetHallsPaginatedResponseDto {
-    items: any[]
+    items: HallResponse[]
     total:number
 }
