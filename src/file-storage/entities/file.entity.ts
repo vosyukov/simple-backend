@@ -9,6 +9,9 @@ export class FileEntity {
     @Column()
     name: string;
 
+    @Column()
+    path: string
+
     @CreateDateColumn()
     createdAt: Date
 

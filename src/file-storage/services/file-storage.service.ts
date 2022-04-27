@@ -9,16 +9,16 @@ const manager = require('node-selectel-manager')({
     password: env.FS_PASSWORD,
 });
 
+const BUCKET_NAME = 'simple'
+const DIR = 'hall-photos'
+
 @Injectable()
 export class FileStorageService {
     constructor(private readonly fileRepository:FileRepository){}
 
     public async uploadFile(name: string, data: Buffer): Promise<FileEntity> {
-        console.log(name)
         const hash = createHash('sha256').update(data).digest('hex');
-        console.log(hash)
-        await manager.uploadFile(Uint8Array.from(data), `simple/hall-photos/${hash}/` + name)
-        return this.fileRepository.save({name})
+        await manager.uploadFile(Uint8Array.from(data), `${BUCKET_NAME}/${DIR}/${hash}/`${name})
+        return this.fileRepository.save({name, path: `${hash}/${name}`})
     }
-
 }
