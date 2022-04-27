@@ -18,7 +18,7 @@ export class FileStorageService {
 
     public async uploadFile(name: string, data: Buffer): Promise<FileEntity> {
         const hash = createHash('sha256').update(data).digest('hex');
-        await manager.uploadFile(Uint8Array.from(data), `${BUCKET_NAME}/${DIR}/${hash}/`${name})
+        await manager.uploadFile(Uint8Array.from(data), `${BUCKET_NAME}/${DIR}/${hash}/${name}`)
         return this.fileRepository.save({name, path: `${hash}/${name}`})
     }
 }
