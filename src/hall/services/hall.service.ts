@@ -10,6 +10,7 @@ export interface AddHallOptions {
     sourceLink?: string
     area?: number
     ceilingHeight?: number
+    price?: number
     studioId: string
     photoIds: string[]
 }
@@ -20,7 +21,7 @@ export class HallService {
     }
 
     public async addHall(options: AddHallOptions):Promise<HallEntity> {
-        const {name, photoIds, description, studioId, sourceLink, area, ceilingHeight} = options
+        const {name, photoIds, description, studioId, sourceLink, area, ceilingHeight, price} = options
         const photos = photoIds.map(i => {
             const p = new FileEntity()
             p.id = i
@@ -30,7 +31,7 @@ export class HallService {
         const studio = new StudioEntity()
         studio.id = studioId
 
-        return await this.hallRepository.save({name, photos, description, studio, sourceLink, area, ceilingHeight})
+        return await this.hallRepository.save({name, photos, description, studio, sourceLink, area, ceilingHeight, price})
     }
 
     public async getHallsPaginated(offset: number, limit: number): Promise<{items: HallEntity[], total: number}> {

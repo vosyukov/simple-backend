@@ -29,6 +29,9 @@ export class HallEntity {
     @Column({nullable: true})
     ceilingHeight?: number
 
+    @Column({nullable: true})
+    price?: number
+
     @OneToMany(() =>  FileEntity, v => v.hall, {nullable: true})
     photos: FileEntity[]
 
