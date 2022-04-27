@@ -33,7 +33,7 @@ export class HallController {
                 area: item.area,
                 ceilingHeight: item.ceilingHeight,
                 price: item.price,
-                photos: item.photos.map(i => `https://6916b2be-dfd4-42ea-bd97-9f244a93d797.selcdn.net/${BUCKET_NAME}/${DIR}/${i.path}`)
+                photos: item.photos.map(i => `https://273430.selcdn.ru/${BUCKET_NAME}/${DIR}/${i.path}`)
             })),
             total: data.total
         }
