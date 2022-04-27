@@ -12,7 +12,7 @@ export class FileStorageController {
 
 
     @Post('uploadFile')
-    @ApiOperation({ summary: 'Create cat' })
+    @ApiOperation({ summary: 'Загрузить файл', description: "Загружает файл на сервер для последующего использования"})
     public async uploadFile(@Body() dto: UploadFileRequestDto): Promise<UploadFileResponseDto>{
         const  {name, data} = dto
         const file = await this.fileStorageService.uploadFile(name, Buffer.from(data, 'base64'))
