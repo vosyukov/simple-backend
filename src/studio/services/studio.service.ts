@@ -4,6 +4,7 @@ import {StudioRepository} from "../repositories/studio.repository";
 
 export interface AddStudioOptions {
     name: string
+    sourceLink?: string
 }
 
 @Injectable()
@@ -11,8 +12,8 @@ export class StudioService {
     constructor(private readonly studioRepository:StudioRepository){}
 
     public async addStudio(options: AddStudioOptions):Promise<StudioEntity> {
-        const {name} = options
-        return this.studioRepository.save({name})
+        const {name, sourceLink} = options
+        return this.studioRepository.save({name, sourceLink})
     }
 
     public async getStudiosPaginated(offset: number, limit: number): Promise<{items: StudioEntity[], total: number}> {

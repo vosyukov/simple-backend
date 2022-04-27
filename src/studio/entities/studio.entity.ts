@@ -11,6 +11,9 @@ export class StudioEntity {
     @Column()
     name: string;
 
+    @Column({nullable: true})
+    sourceLink?: string
+
     @OneToMany(() =>  HallEntity, v => v.studio, {nullable: true})
     halls?: HallEntity[]
 }

@@ -6,7 +6,8 @@ import {StudioEntity} from "../../studio/entities/studio.entity";
 
 export interface AddHallOptions {
     name: string;
-    description: string
+    description?: string
+    sourceLink?: string
     studioId: string
     photoIds: string[]
 }
@@ -17,7 +18,7 @@ export class HallService {
     }
 
     public async addHall(options: AddHallOptions):Promise<HallEntity> {
-        const {name, photoIds, description, studioId} = options
+        const {name, photoIds, description, studioId, sourceLink} = options
         const photos = photoIds.map(i => {
             const p = new FileEntity()
             p.id = i
@@ -27,6 +28,6 @@ export class HallService {
         const studio = new StudioEntity()
         studio.id = studioId
 
-        return await this.hallRepository.save({name, photos, description, studio })
+        return await this.hallRepository.save({name, photos, description, studio, sourceLink })
     }
 }
