@@ -32,4 +32,9 @@ export class HallService {
 
         return await this.hallRepository.save({name, photos, description, studio, sourceLink, area, ceilingHeight})
     }
+
+    public async getHallsPaginated(offset: number, limit: number): Promise<{items: HallEntity[], total: number}> {
+        const [items, total ]= await this.hallRepository.findAndCount({skip: offset, take: limit, relations: ['photos']})
+        return {items, total}
+    }
 }
