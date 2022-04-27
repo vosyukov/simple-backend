@@ -22,6 +22,10 @@ export class AddHallRequestDto {
     @IsNumber()
     area?: number
 
+    @IsOptional()
+    @IsNumber()
+    ceilingHeight?: number
+
     @IsDefined()
     @IsUUID('4', {each: true})
     photoIds: string[]
