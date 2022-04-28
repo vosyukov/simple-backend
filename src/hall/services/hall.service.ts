@@ -66,8 +66,7 @@ export class HallService {
     const hall = await this.hallRepository.findOne({ sourceLink });
 
     if (sourceLink && hall) {
-      await this.hallRepository.update({ id: hall.id }, obj);
-      return this.hallRepository.findOneOrFail(hall.id);
+      return this.hallRepository.save({ id: hall.id, ...obj });
     }
 
     return await this.hallRepository.save(obj);
