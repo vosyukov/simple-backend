@@ -15,7 +15,7 @@ import { FeatureEntity } from "../../feature/entities/feature.entity";
 
 const TABLE_NAME = "halls";
 
-@Index("sourceLink")
+@Index("index_halls_sourceLink", ["sourceLink"])
 @Entity(TABLE_NAME)
 export class HallEntity {
   @PrimaryGeneratedColumn("uuid")

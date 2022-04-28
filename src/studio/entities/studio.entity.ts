@@ -9,7 +9,7 @@ import { HallEntity } from "../../hall/entities/hall.entity";
 
 const TABLE_NAME = "studios";
 
-@Index("sourceLink")
+@Index("index_studios_sourceLink", ["sourceLink"])
 @Entity(TABLE_NAME)
 export class StudioEntity {
   @PrimaryGeneratedColumn("uuid")
