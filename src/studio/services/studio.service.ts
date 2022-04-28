@@ -13,7 +13,17 @@ export class StudioService {
 
   public async addStudio(options: AddStudioOptions): Promise<StudioEntity> {
     const { name, sourceLink } = options;
-    return this.studioRepository.save({ name, sourceLink });
+    const obj = { name, sourceLink };
+    const studio = await this.studioRepository.findOne({
+      sourceLink,
+    });
+
+    if (studio) {
+      await this.studioRepository.update({ id: studio.id }, obj);
+      return this.studioRepository.findOneOrFail(studio.id);
+    }
+
+    return await this.studioRepository.save(obj);
   }
 
   public async getStudiosPaginated(
