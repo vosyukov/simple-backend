@@ -50,7 +50,7 @@ export class HallService {
       return p;
     });
 
-    return await this.hallRepository.save({
+    const obj = {
       name,
       photos,
       description,
@@ -61,7 +61,16 @@ export class HallService {
       price,
       features,
       address,
-    });
+    };
+
+    const hall = await this.hallRepository.findOne({ sourceLink: sourceLink });
+
+    if (hall) {
+      await this.hallRepository.update({ id: hall.id }, obj);
+      return this.hallRepository.findOneOrFail(hall.id);
+    }
+
+    return await this.hallRepository.save(obj);
   }
 
   public async getHallsPaginated(

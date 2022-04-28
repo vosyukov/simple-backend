@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -13,6 +14,8 @@ import { StudioEntity } from "../../studio/entities/studio.entity";
 import { FeatureEntity } from "../../feature/entities/feature.entity";
 
 const TABLE_NAME = "halls";
+
+@Index("sourceLink")
 @Entity(TABLE_NAME)
 export class HallEntity {
   @PrimaryGeneratedColumn("uuid")
