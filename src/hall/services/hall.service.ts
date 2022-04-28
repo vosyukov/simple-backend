@@ -63,9 +63,9 @@ export class HallService {
       address,
     };
 
-    const hall = await this.hallRepository.findOne({ sourceLink: sourceLink });
+    const hall = await this.hallRepository.findOne({ sourceLink });
 
-    if (hall) {
+    if (sourceLink && hall) {
       await this.hallRepository.update({ id: hall.id }, obj);
       return this.hallRepository.findOneOrFail(hall.id);
     }

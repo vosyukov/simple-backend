@@ -15,6 +15,9 @@ export class FileEntity {
   @Column()
   name: string;
 
+  @Column({ unique: true })
+  hash: string;
+
   @Column()
   path: string;
 
