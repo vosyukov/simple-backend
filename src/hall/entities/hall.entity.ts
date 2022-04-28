@@ -33,10 +33,10 @@ export class HallEntity {
   @Column({ nullable: true })
   sourceLink?: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: "float" })
   area?: number;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, type: "float" })
   ceilingHeight?: number;
 
   @Column({ nullable: true })
