@@ -1,9 +1,9 @@
-import {IsNumber} from "class-validator";
+import { IsNumber } from "class-validator";
 
 export class GetStudiosPaginatedRequestDto {
-    @IsNumber()
-    offset: number
+  @IsNumber()
+  offset: number;
 
-    @IsNumber()
-    limit: number
+  @IsNumber()
+  limit: number;
 }

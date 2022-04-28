@@ -1,3 +1,3 @@
 export class AddHallResponseDto {
-    id: string
+  id: string;
 }

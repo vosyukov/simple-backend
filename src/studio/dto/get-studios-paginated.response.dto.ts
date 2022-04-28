@@ -1,5 +1,4 @@
-
 export class GetStudiosPaginatedResponseDto {
-    items: any[]
-    total:number
+  items: any[];
+  total: number;
 }

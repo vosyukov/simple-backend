@@ -1,4 +1,3 @@
-
 export class UploadFileResponseDto {
-    id: string;
+  id: string;
 }

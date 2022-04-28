@@ -1,10 +1,10 @@
-import {IsOptional, IsString} from "class-validator";
+import { IsOptional, IsString } from "class-validator";
 
 export class AddStudioRequestDto {
-    @IsString()
-    name: string
+  @IsString()
+  name: string;
 
-    @IsOptional()
-    @IsString()
-    sourceLink?: string
+  @IsOptional()
+  @IsString()
+  sourceLink?: string;
 }

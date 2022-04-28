@@ -1,20 +1,26 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import {HallEntity} from "../../hall/entities/hall.entity";
-const TABLE_NAME = 'files'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { HallEntity } from "../../hall/entities/hall.entity";
+const TABLE_NAME = "files";
 @Entity(TABLE_NAME)
 export class FileEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @Column()
-    path: string
+  @Column()
+  path: string;
 
-    @CreateDateColumn()
-    createdAt: Date
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @ManyToOne(()=>HallEntity, {nullable: true})
-    hall: HallEntity
+  @ManyToOne(() => HallEntity, { nullable: true })
+  hall: HallEntity;
 }

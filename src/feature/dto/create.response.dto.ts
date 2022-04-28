@@ -1,3 +1,3 @@
 export class CreateResponseDto {
-    ids: string[]
+  ids: string[];
 }

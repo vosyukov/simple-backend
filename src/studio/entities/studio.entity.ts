@@ -1,19 +1,19 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {HallEntity} from "../../hall/entities/hall.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { HallEntity } from "../../hall/entities/hall.entity";
 
-const TABLE_NAME = 'studios'
+const TABLE_NAME = "studios";
 
 @Entity(TABLE_NAME)
 export class StudioEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @Column({nullable: true})
-    sourceLink?: string
+  @Column({ nullable: true })
+  sourceLink?: string;
 
-    @OneToMany(() =>  HallEntity, v => v.studio, {nullable: true})
-    halls?: HallEntity[]
+  @OneToMany(() => HallEntity, (v) => v.studio, { nullable: true })
+  halls?: HallEntity[];
 }
