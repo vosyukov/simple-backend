@@ -25,8 +25,7 @@ export class StudioService {
     });
 
     if (studio) {
-      await this.studioRepository.update({ id: studio.id }, obj);
-      return this.studioRepository.findOneOrFail(studio.id);
+      return await this.studioRepository.save({ id: studio.id, ...obj });
     }
 
     return await this.studioRepository.save(obj);
