@@ -22,7 +22,7 @@ export class StudioEntity {
   name: string;
 
   @OneToOne(() => CityEntity, { nullable: true })
-  @JoinColumn({ name: "cityId" })
+  @JoinColumn()
   city?: CityEntity;
 
   @Column({ type: "uuid", nullable: true })
