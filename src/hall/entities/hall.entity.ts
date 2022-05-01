@@ -31,7 +31,7 @@ export class HallEntity {
   name: string;
 
   @OneToOne(() => CityEntity, { nullable: true })
-  @JoinColumn()
+  @JoinTable()
   city?: CityEntity;
 
   @Column({ nullable: true })
