@@ -30,8 +30,7 @@ export class HallEntity {
   @Column()
   name: string;
 
-  @OneToOne(() => CityEntity, { nullable: true })
-  @JoinColumn()
+  @ManyToOne(() => CityEntity, { nullable: true })
   city?: CityEntity;
 
   @Column({ nullable: true })
@@ -53,7 +52,7 @@ export class HallEntity {
   address?: string;
 
   @ManyToMany(() => FeatureEntity, { nullable: true })
-  @JoinTable()
+  @JoinColumn()
   features?: FeatureEntity[];
 
   @OneToMany(() => FileEntity, (v) => v.hall, { nullable: true })
