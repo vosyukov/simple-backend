@@ -25,7 +25,7 @@ export class StudioEntity {
   @JoinColumn({ name: "cityId" })
   city?: CityEntity;
 
-  @Column({ type: "uuid" })
+  @Column({ type: "uuid", nullable: true })
   cityId: string;
 
   @Column({ nullable: true })
