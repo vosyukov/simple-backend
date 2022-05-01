@@ -52,7 +52,7 @@ export class HallEntity {
   address?: string;
 
   @ManyToMany(() => FeatureEntity, { nullable: true })
-  @JoinColumn()
+  @JoinTable()
   features?: FeatureEntity[];
 
   @OneToMany(() => FileEntity, (v) => v.hall, { nullable: true })
