@@ -13,6 +13,7 @@ export interface AddHallOptions {
   ceilingHeight?: number;
   price?: number;
   address?: string;
+  cityId?: string;
   studioId: string;
   photoIds?: string[];
   featureIds?: string[];
@@ -34,6 +35,7 @@ export class HallService {
       price,
       featureIds,
       address,
+      cityId,
     } = options;
     const photos = photoIds.map((i) => {
       const p = new FileEntity();
@@ -61,6 +63,7 @@ export class HallService {
       price,
       features,
       address,
+      cityId,
     };
 
     const hall = await this.hallRepository.findOne({ sourceLink });
@@ -79,7 +82,7 @@ export class HallService {
     const [items, total] = await this.hallRepository.findAndCount({
       skip: offset,
       take: limit,
-      relations: ["studio", "photos", "features"],
+      relations: ["studio", "photos", "features", "city"],
     });
     return { items, total };
   }

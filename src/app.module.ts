@@ -6,6 +6,7 @@ import { FileStorageModule } from "./file-storage/file-storage.module";
 import { StudioModule } from "./studio/studio.module";
 import { AppController } from "./app.controller";
 import { FeatureModule } from "./feature/feature.module";
+import { CityModule } from "./city/city.module";
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { FeatureModule } from "./feature/feature.module";
     FileStorageModule,
     StudioModule,
     FeatureModule,
+    CityModule,
   ],
   controllers: [AppController],
 })

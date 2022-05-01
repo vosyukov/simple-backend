@@ -6,12 +6,15 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
+  OneToOne,
+  JoinColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
 import { FileEntity } from "../../file-storage/entities/file.entity";
 import { StudioEntity } from "../../studio/entities/studio.entity";
 import { FeatureEntity } from "../../feature/entities/feature.entity";
+import { CityEntity } from "../../city/entities/city.entity";
 
 const TABLE_NAME = "halls";
 
@@ -26,6 +29,10 @@ export class HallEntity {
 
   @Column()
   name: string;
+
+  @OneToOne(() => CityEntity)
+  @JoinColumn({ name: "cityId" })
+  city?: CityEntity;
 
   @Column({ nullable: true })
   description?: string;

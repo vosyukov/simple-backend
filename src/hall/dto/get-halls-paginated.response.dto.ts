@@ -6,7 +6,8 @@ class HallResponse {
   name: string;
   features: string[];
   area: number;
-
+  cityName: string;
+  cityId: string;
   ceilingHeight: number;
   price: number;
   address: string;

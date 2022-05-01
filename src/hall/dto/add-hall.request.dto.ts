@@ -20,6 +20,10 @@ export class AddHallRequestDto {
   description?: string;
 
   @IsOptional()
+  @IsUUID()
+  cityId?: string;
+
+  @IsOptional()
   @IsString()
   sourceLink?: string;
 

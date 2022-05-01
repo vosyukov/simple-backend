@@ -31,6 +31,7 @@ export class HallController {
       price,
       featureIds,
       address,
+      cityId,
     } = dto;
 
     const { id } = await this.hallService.addHall({
@@ -44,6 +45,7 @@ export class HallController {
       price,
       featureIds,
       address,
+      cityId,
     });
     return { id };
   }
@@ -70,6 +72,8 @@ export class HallController {
         ceilingHeight: item.ceilingHeight,
         price: item.price,
         address: item.address,
+        cityName: item.city.name,
+        cityId: item.city.id,
         photos: item.photos.map(
           (i) => `https://273430.selcdn.ru/${BUCKET_NAME}/${DIR}/${i.path}`
         ),
