@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsUUID } from "class-validator";
+import { IsDefined, IsOptional, IsString, IsUUID } from "class-validator";
 
 export class AddStudioRequestDto {
   @IsString()
@@ -8,7 +8,7 @@ export class AddStudioRequestDto {
   @IsString()
   sourceLink?: string;
 
-  @IsOptional()
+  @IsDefined()
   @IsUUID()
   cityId?: string;
 }
