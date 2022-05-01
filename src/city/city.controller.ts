@@ -1,4 +1,4 @@
-import { Body, Controller } from "@nestjs/common";
+import { Body, Controller, Post } from "@nestjs/common";
 import { CityService } from "./services/city.service";
 import { AddCityRequestDto } from "./dto/add-city.request.dto";
 import { AddCityResponseDto } from "./dto/add-city.response.dto";
@@ -9,6 +9,7 @@ import { ApiTags } from "@nestjs/swagger";
 export class CityController {
   constructor(private readonly cityService: CityService) {}
 
+  @Post("addCity")
   public async addCity(
     @Body() dto: AddCityRequestDto
   ): Promise<AddCityResponseDto> {
