@@ -35,7 +35,7 @@ export class HallEntity {
   city?: CityEntity;
 
   @Column({ type: "uuid", nullable: true })
-  cityId: string;
+  cityId?: string;
 
   @Column({ nullable: true })
   description?: string;

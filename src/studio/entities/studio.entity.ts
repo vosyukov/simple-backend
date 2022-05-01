@@ -26,7 +26,7 @@ export class StudioEntity {
   city?: CityEntity;
 
   @Column({ type: "uuid", nullable: true })
-  cityId: string;
+  cityId?: string;
 
   @Column({ nullable: true })
   sourceLink?: string;
