@@ -2,7 +2,9 @@ import {
   Column,
   Entity,
   Index,
-  JoinColumn, JoinTable,
+  JoinColumn,
+  JoinTable,
+  ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -21,8 +23,7 @@ export class StudioEntity {
   @Column()
   name: string;
 
-  @OneToOne(() => CityEntity, { nullable: true })
-  @JoinTable()
+  @ManyToOne(() => CityEntity, { nullable: true })
   city?: CityEntity;
 
   @Column({ nullable: true })
