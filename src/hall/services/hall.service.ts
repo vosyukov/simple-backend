@@ -4,6 +4,7 @@ import { HallRepository } from "../repositories/hall.repository";
 import { FileEntity } from "../../file-storage/entities/file.entity";
 import { StudioEntity } from "../../studio/entities/studio.entity";
 import { FeatureEntity } from "../../feature/entities/feature.entity";
+import { CityEntity } from "../../city/entities/city.entity";
 
 export interface AddHallOptions {
   name: string;
@@ -46,6 +47,9 @@ export class HallService {
     const studio = new StudioEntity();
     studio.id = studioId;
 
+    const city = new CityEntity();
+    city.id = cityId;
+
     const features = featureIds.map((i) => {
       const p = new FeatureEntity();
       p.id = i;
@@ -63,7 +67,7 @@ export class HallService {
       price,
       features,
       address,
-      cityId,
+      city,
     };
 
     const hall = await this.hallRepository.findOne({ sourceLink });

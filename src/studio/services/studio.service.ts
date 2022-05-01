@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { StudioEntity } from "../entities/studio.entity";
 import { StudioRepository } from "../repositories/studio.repository";
+import { CityEntity } from "../../city/entities/city.entity";
 
 export interface AddStudioOptions {
   name: string;
@@ -14,7 +15,11 @@ export class StudioService {
 
   public async addStudio(options: AddStudioOptions): Promise<StudioEntity> {
     const { name, sourceLink, cityId } = options;
-    const obj = { name, sourceLink, cityId };
+
+    const city = new CityEntity();
+    city.id = cityId;
+
+    const obj = { name, sourceLink, city };
     const studio = await this.studioRepository.findOne({
       sourceLink,
     });
