@@ -4,6 +4,7 @@ import { StudioRepository } from "../repositories/studio.repository";
 
 export interface AddStudioOptions {
   name: string;
+  cityId?: string;
   sourceLink?: string;
 }
 
@@ -12,8 +13,8 @@ export class StudioService {
   constructor(private readonly studioRepository: StudioRepository) {}
 
   public async addStudio(options: AddStudioOptions): Promise<StudioEntity> {
-    const { name, sourceLink } = options;
-    const obj = { name, sourceLink };
+    const { name, sourceLink, cityId } = options;
+    const obj = { name, sourceLink, cityId };
     const studio = await this.studioRepository.findOne({
       sourceLink,
     });

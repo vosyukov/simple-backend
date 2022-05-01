@@ -2,10 +2,13 @@ import {
   Column,
   Entity,
   Index,
+  JoinColumn,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { HallEntity } from "../../hall/entities/hall.entity";
+import { CityEntity } from "../../city/entities/city.entity";
 
 const TABLE_NAME = "studios";
 
@@ -17,6 +20,10 @@ export class StudioEntity {
 
   @Column()
   name: string;
+
+  @OneToOne(() => CityEntity)
+  @JoinColumn({ name: "cityId" })
+  city?: CityEntity;
 
   @Column({ nullable: true })
   sourceLink?: string;

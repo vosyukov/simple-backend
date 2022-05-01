@@ -16,8 +16,12 @@ export class StudioController {
   public async addStudio(
     @Body() dto: AddStudioRequestDto
   ): Promise<AddStudioResponseDto> {
-    const { name, sourceLink } = dto;
-    const { id } = await this.studioService.addStudio({ name, sourceLink });
+    const { name, cityId, sourceLink } = dto;
+    const { id } = await this.studioService.addStudio({
+      name,
+      sourceLink,
+      cityId,
+    });
     return { id };
   }
 
