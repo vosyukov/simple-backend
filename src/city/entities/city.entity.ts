@@ -12,6 +12,7 @@ import {
 import { FileEntity } from "../../file-storage/entities/file.entity";
 import { StudioEntity } from "../../studio/entities/studio.entity";
 import { FeatureEntity } from "../../feature/entities/feature.entity";
+import { HallEntity } from "../../hall/entities/hall.entity";
 
 const TABLE_NAME = "cities";
 
@@ -22,4 +23,7 @@ export class CityEntity {
 
   @Column()
   name: string;
+
+  @OneToMany(() => HallEntity, (v) => v.city, { nullable: true })
+  halls: HallEntity[];
 }
