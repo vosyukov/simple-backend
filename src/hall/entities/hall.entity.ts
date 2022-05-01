@@ -34,6 +34,9 @@ export class HallEntity {
   @JoinColumn({ name: "cityId" })
   city?: CityEntity;
 
+  @Column({ type: "uuid" })
+  cityId: string;
+
   @Column({ nullable: true })
   description?: string;
 

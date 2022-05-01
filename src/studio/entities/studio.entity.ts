@@ -25,6 +25,9 @@ export class StudioEntity {
   @JoinColumn({ name: "cityId" })
   city?: CityEntity;
 
+  @Column({ type: "uuid" })
+  cityId: string;
+
   @Column({ nullable: true })
   sourceLink?: string;
 
