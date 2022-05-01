@@ -12,7 +12,7 @@ export class CityService {
     const city = await this.cityRepository.findOne({ name });
 
     if (city) {
-      return this.cityRepository.save({ id: city.id, name });
+      return city;
     }
 
     return await this.cityRepository.save({ name });
