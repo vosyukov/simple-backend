@@ -6,8 +6,6 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  OneToOne,
-  JoinColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
@@ -30,13 +28,13 @@ export class HallEntity {
   @Column()
   name: string;
 
-  @ManyToOne(() => CityEntity, { nullable: true })
+  @ManyToOne(() => CityEntity, (v) => v.halls, { nullable: true })
   city?: CityEntity;
 
   @Column({ nullable: true })
   description?: string;
 
-  @Column({ nullable: true })
+  @Column({ unique: true, nullable: true })
   sourceLink?: string;
 
   @Column({ nullable: true, type: "float" })

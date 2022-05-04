@@ -75,7 +75,8 @@ export class HallController {
         cityName: item.city.name,
         cityId: item.city.id,
         photos: item.photos.map(
-          (i) => `https://273430.selcdn.ru/${BUCKET_NAME}/${DIR}/${i.path}`
+          (i) =>
+            `https://273430.selcdn.ru/${BUCKET_NAME}/${DIR}/${i.hash}/${i.name}`
         ),
       })),
       total: data.total,

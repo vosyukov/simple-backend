@@ -18,9 +18,6 @@ export class FileEntity {
   @Column({ unique: true })
   hash: string;
 
-  @Column()
-  path: string;
-
   @CreateDateColumn()
   createdAt: Date;
 

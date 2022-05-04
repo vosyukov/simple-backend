@@ -29,6 +29,6 @@ export class FileStorageService {
       Uint8Array.from(data),
       `${BUCKET_NAME}/${DIR}/${hash}/${name}`
     );
-    return this.fileRepository.save({ name, hash, path: `${hash}/${name}` });
+    return this.fileRepository.save({ name, hash });
   }
 }

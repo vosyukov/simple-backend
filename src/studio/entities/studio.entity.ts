@@ -2,11 +2,8 @@ import {
   Column,
   Entity,
   Index,
-  JoinColumn,
-  JoinTable,
   ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { HallEntity } from "../../hall/entities/hall.entity";
@@ -26,7 +23,7 @@ export class StudioEntity {
   @ManyToOne(() => CityEntity, { nullable: true })
   city?: CityEntity;
 
-  @Column({ nullable: true })
+  @Column({ unique: true, nullable: true })
   sourceLink?: string;
 
   @OneToMany(() => HallEntity, (v) => v.studio, { nullable: true })
