@@ -1,17 +1,5 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinTable,
-  ManyToMany,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-import { FileEntity } from "../../file-storage/entities/file.entity";
-import { StudioEntity } from "../../studio/entities/studio.entity";
-import { FeatureEntity } from "../../feature/entities/feature.entity";
 import { HallEntity } from "../../hall/entities/hall.entity";
 
 const TABLE_NAME = "cities";
